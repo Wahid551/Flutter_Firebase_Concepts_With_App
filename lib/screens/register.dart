@@ -1,5 +1,6 @@
 import 'package:flutter_firebase_coffe/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_coffe/shared/constants.dart';
 
 class Register extends StatefulWidget {
   final Function toggleView;
@@ -44,10 +45,12 @@ class _RegisterState extends State<Register> {
                   setState(() => email = val);
                 },
                 validator: (_value) => _value.isEmpty ? 'Enter Email' : null,
+                decoration: textInputdecoration.copyWith(hintText: 'Email'),
               ),
               SizedBox(height: 20.0),
               TextFormField(
                 obscureText: true,
+                decoration: textInputdecoration.copyWith(hintText: 'Password'),
                 onChanged: (val) {
                   setState(() => password = val);
                 },
