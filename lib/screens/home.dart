@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_coffe/models/Brew.dart';
 import 'package:flutter_firebase_coffe/services/auth.dart';
+import 'package:flutter_firebase_coffe/services/database.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_firebase_coffe/screens/coffee_list.dart';
 
 class Home extends StatelessWidget {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return StreamProvider<List<Brew>>.value(
+      value: DatabaseService().coffee,
       child: Scaffold(
         backgroundColor: Colors.brown[50],
         appBar: AppBar(
@@ -22,6 +27,7 @@ class Home extends StatelessWidget {
             ),
           ],
         ),
+        body: CoffeeList(),
       ),
     );
   }
